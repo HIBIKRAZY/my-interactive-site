@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini HypeDrop Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>🔥 Mystery Case Drop</h1>
+    <p>Balance: $<span id="balance">100</span></p>
+
+    <div class="cases">
+      <div class="case" onclick="openCase('basic')">
+        <h2>Basic Case ($10)</h2>
+        <img src="https://i.imgur.com/R70S3bV.png" alt="Basic">
+      </div>
+      <div class="case" onclick="openCase('epic')">
+        <h2>Epic Case ($30)</h2>
+        <img src="https://i.imgur.com/B0UPA4x.png" alt="Epic">
+      </div>
+      <div class="case" onclick="openCase('legendary')">
+        <h2>Legendary Case ($60)</h2>
+        <img src="https://i.imgur.com/jTOU0Kv.png" alt="Legendary">
+      </div>
+    </div>
+
+    <div id="result"></div>
+    <h3>Your Inventory</h3>
+    <ul id="inventory"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
