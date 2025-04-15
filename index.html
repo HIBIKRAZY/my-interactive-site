@@ -11,31 +11,38 @@
       box-sizing: border-box;
     }
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1e1f26, #2c2f38);
+      color: #fff;
     }
     header, footer {
-      background: #111;
+      background: #14151a;
       color: white;
-      padding: 20px;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 30px;
     }
     nav a {
-      color: white;
+      color: #ffcc00;
       text-decoration: none;
+      font-weight: bold;
     }
     main {
       padding: 40px;
     }
+    h2 {
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
     .featured-boxes, .categories, .box-listing {
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
     .box-carousel, .box-list {
       display: flex;
@@ -44,36 +51,59 @@
     }
     .box, .box-carousel div {
       min-width: 200px;
-      height: 300px;
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
+      height: 280px;
+      background: #24262d;
+      border-radius: 15px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      transition: transform 0.2s ease;
+    }
+    .box:hover {
+      transform: scale(1.05);
+      background: #30323c;
     }
     .category {
       margin-right: 10px;
-      padding: 10px;
-      background: #3498db;
-      color: white;
+      padding: 12px 20px;
+      background: #ffcc00;
+      color: #111;
       border: none;
-      border-radius: 5px;
+      border-radius: 25px;
+      font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    .category:hover {
+      background: #ffaa00;
     }
     button.buy-box {
-      margin-top: 10px;
+      margin-top: 15px;
       background: #2ecc71;
       color: white;
       border: none;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 12px 18px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button.buy-box:hover {
+      background: #27ae60;
+    }
+    .account span {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    footer p {
+      font-size: 0.9rem;
+      color: #bbb;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Hypedrop</div>
+    <div class="logo" style="font-size: 1.5rem; font-weight: bold; color: #ffcc00;">Hypedrop</div>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
@@ -84,7 +114,7 @@
     </nav>
     <div class="account">
       <span id="balance">Balance: $100</span>
-      <button onclick="alert('Log in coming soon')">Log In</button>
+      <button onclick="alert('Log in coming soon')" style="background: #3498db; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer;">Log In</button>
     </div>
   </header>
   <main>
@@ -136,7 +166,7 @@
           boxDiv.className = 'box';
           boxDiv.innerHTML = `
             <h3>${box.name}</h3>
-            <p>$${box.price}</p>
+            <p style="margin: 15px 0; font-size: 1.2rem; color: #ffcc00;">$${box.price}</p>
             <button class="buy-box" onclick="buyBox(${box.id})">Buy Now</button>
           `;
           container.appendChild(boxDiv);
@@ -147,7 +177,8 @@
       const container = document.getElementById('featured');
       boxes.forEach(box => {
         const boxDiv = document.createElement('div');
-        boxDiv.innerHTML = `<strong>${box.name}</strong><br>$${box.price}`;
+        boxDiv.className = 'box';
+        boxDiv.innerHTML = `<h4>${box.name}</h4><p style="margin-top: 10px; color: #ffcc00;">$${box.price}</p>`;
         container.appendChild(boxDiv);
       });
     }
