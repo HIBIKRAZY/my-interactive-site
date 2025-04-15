@@ -1,174 +1,80 @@
+
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hypedrop Replica</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #1e1f26, #2c2f38);
-      color: #fff;
-    }
-    header, footer {
-      background: #14151a;
-      color: white;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav a {
-      color: #ffcc00;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    main {
-      padding: 40px;
-    }
-    h2 {
-      margin-bottom: 20px;
-      color: #ffcc00;
-    }
-    .featured-boxes, .categories, .box-listing {
-      margin-bottom: 60px;
-    }
-    .box-carousel, .box-list {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-    }
-    .box, .box-carousel div {
-      min-width: 200px;
-      height: 280px;
-      background: #24262d;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-      transition: transform 0.2s ease;
-    }
-    .box:hover {
-      transform: scale(1.05);
-      background: #30323c;
-    }
-    .category {
-      margin-right: 10px;
-      padding: 12px 20px;
-      background: #ffcc00;
-      color: #111;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .category:hover {
-      background: #ffaa00;
-    }
-    button.buy-box {
-      margin-top: 15px;
-      background: #2ecc71;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    button.buy-box:hover {
-      background: #27ae60;
-    }
-    .account span {
-      margin-right: 10px;
-      font-weight: bold;
-    }
-    footer p {
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo" style="font-size: 1.5rem; font-weight: bold; color: #ffcc00;">Hypedrop</div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Mystery Boxes</a></li>
-        <li><a href="#">My Account</a></li>
-        <li><a href="#">Help</a></li>
-      </ul>
-    </nav>
-    <div class="account">
-      <span id="balance">Balance: $100</span>
-      <button onclick="alert('Log in coming soon')" style="background: #3498db; color: white; padding: 10px 16px; border: none; border-radius: 6px; cursor: pointer;">Log In</button>
-    </div>
-  </header>
-  <main>
-    <section class="featured-boxes">
-      <h2>Featured Mystery Boxes</h2>
-      <div class="box-carousel" id="featured">
-        <!-- Featured boxes -->
-      </div>
-    </section>
-    <section class="categories">
-      <h2>Categories</h2>
-      <button class="category" data-category="all">All</button>
-      <button class="category" data-category="electronics">Electronics</button>
-      <button class="category" data-category="fashion">Fashion</button>
-      <button class="category" data-category="gaming">Gaming</button>
-    </section>
-    <section class="box-listing">
-      <h2>Available Mystery Boxes</h2>
-      <div class="box-list" id="box-list">
-        <!-- Dynamic box list -->
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Hypedrop. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const boxes = [
-      { id: 1, name: 'Electro Box', category: 'electronics', price: 30 },
-      { id: 2, name: 'Fashion Blast', category: 'fashion', price: 40 },
-      { id: 3, name: 'Gaming Mania', category: 'gaming', price: 60 },
-      { id: 4, name: 'Tech Giant', category: 'electronics', price: 100 },
-    ];
-
-    let userBalance = 100;
-
-    function updateBalance() {
-      document.getElementById('balance').innerText = `Balance: $${userBalance}`;
-    }
-
-    function displayBoxes(filter = 'all') {
-      const container = document.getElementById('box-list');
-      container.innerHTML = '';
-      boxes
-        .filter(box => filter === 'all' || box.category === filter)
+      boxes.filter(box => filter === 'all' || box.category === filter)
         .forEach(box => {
           const boxDiv = document.createElement('div');
           boxDiv.className = 'box';
-          boxDiv.innerHTML = `
-            <h3>${box.name}</h3>
-            <p style="margin: 15px 0; font-size: 1.2rem; color: #ffcc00;">$${box.price}</p>
-            <button class="buy-box" onclick="buyBox(${box.id})">Buy Now</button>
-          `;
+          boxDiv.innerHTML = `<h3>${box.name}</h3><p style="margin: 15px 0; font-size: 1.2rem; color: #ffcc00;">$${box.price}</p><button class="buy-box" onclick="buyBox(${box.id})">Buy Now</button>`;
           container.appendChild(boxDiv);
         });
     }
@@ -185,8 +91,9 @@
 
     function buyBox(id) {
       const box = boxes.find(b => b.id === id);
-      if (userBalance >= box.price) {
-        userBalance -= box.price;
+      if (!currentUser) return alert('Please log in first.');
+      if (currentUser.balance >= box.price) {
+        currentUser.balance -= box.price;
         updateBalance();
         alert(`You unboxed the ${box.name}! 🎁`);
       } else {
@@ -195,11 +102,38 @@
     }
 
     document.querySelectorAll('.category').forEach(btn => {
-      btn.addEventListener('click', () => {
-        displayBoxes(btn.dataset.category);
-      });
+      btn.addEventListener('click', () => displayBoxes(btn.dataset.category));
     });
 
+    function showSection(sectionId) {
+      ['home', 'login', 'register'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    function register() {
+      const username = document.getElementById('register-username').value;
+      const password = document.getElementById('register-password').value;
+      if (!username || !password) return alert('Please fill in all fields.');
+      if (users[username]) return alert('Username already exists.');
+      users[username] = { username, password, balance: 100 };
+      alert('Account created! You can now log in.');
+      showSection('login');
+    }
+
+    function login() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      const user = users[username];
+      if (!user || user.password !== password) return alert('Invalid credentials.');
+      currentUser = user;
+      updateBalance();
+      alert(`Welcome, ${username}!`);
+      showSection('home');
+    }
+
+    // Init
     displayBoxes();
     displayFeatured();
     updateBalance();
